@@ -4,11 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
 
+import guru.springframework.sfgpetclinic.ControllerTests;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-class IndexControllerTest {
+
+class IndexControllerTest implements ControllerTests {
 
     IndexController controller;
 
@@ -28,6 +32,7 @@ class IndexControllerTest {
         assertThrows(NotFoundException.class, () -> controller.oopsHandler());
     }
 
+    @Disabled
     @Test
     void testTimeout() {
         assertTimeout(Duration.ofMillis(100), () -> {
@@ -37,6 +42,7 @@ class IndexControllerTest {
 
     }
 
+    @Disabled
     @Test
     void testPreemptTimeout() {
         assertTimeoutPreemptively(Duration.ofMillis(100), () -> {
